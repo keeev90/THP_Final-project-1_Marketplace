@@ -1,7 +1,7 @@
 class Order < ApplicationRecord
 
   #Callbacks
-  after_initialize :fill_order, if: :new_record?
+  after_create :fill_order #, if: :new_record?
   after_create :empty_cart
  
   # after_create :send_new_order_to_admin
@@ -33,7 +33,6 @@ class Order < ApplicationRecord
   def empty_cart
     self.user.cart.join_table_item_carts.destroy_all
   end
-
 
   def send_new_order_to_admin
     UserMailer.new_order_email(self).deliver_now

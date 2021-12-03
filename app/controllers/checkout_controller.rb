@@ -25,8 +25,17 @@ class CheckoutController < ApplicationController
 
   def success
     @session = Stripe::Checkout::Session.retrieve(params[:session_id])
+    puts "#" * 60
+    puts @session
+    puts "#" * 60
     @payment_intent = Stripe::PaymentIntent.retrieve(@session.payment_intent)
-    @order = Order.create(user: current_user) if ( current_user.cart.join_table_item_carts.size >= 1 && @session.payment_status = "paid" )
+    puts "#" * 60
+    puts @payment_intent
+    puts "#" * 60
+    @order = Order.create(user: current_user) if @session.payment_status = "paid"
+    puts "#" * 60
+    puts @order
+    puts "#" * 60
   end
 
   def cancel
