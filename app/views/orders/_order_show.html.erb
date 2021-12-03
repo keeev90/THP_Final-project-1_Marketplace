@@ -1,0 +1,21 @@
+<div class="order-card">
+  <%= link_to "Retour", myprofile_path(@user) %>
+  <div class="order-card__title">
+    <h1>Commande n°<%=@order.id%></h1>
+    <p>Détail de la commande :</p>
+  </div>
+  <% @order.items.each do |item| %>
+    <div class='show-card'>
+      <div class='index-card__illustration show-card__illustration'>
+        <img src=<%= item.image_url %> alt='image'>
+      </div>
+      <div class="show-card__body">
+        <h2><%= item.title %></h2>
+        <p class="grey"><%= item.price %>€</p>
+        <p class=show-card__body--description><%= item.description %></p>
+        <p class="mt-1">Quantité : <%=item.join_table_item_orders.find_by(order_id: @order.id).quantity%></p>
+      </div>
+    </div>
+  <% end %>
+  <p class="order-card__price">Prix total : <%=@order.total_price%>€</p>
+</div>

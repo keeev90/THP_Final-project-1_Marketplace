@@ -1,0 +1,82 @@
+<h2 class="recommendations-title"> Ces articles pourraient vous plaire </h2>
+<div class="recommendations-container">
+
+  <div class='show-card smaller'>
+    <% item = Item.first %>
+    <% if @items.exclude?(item) %>
+      <div class='index-card__illustration show-card__illustration'>
+        <% if item.item_picture.attached? %>
+            <%= image_tag item.item_picture, alt: 'image' %>
+          <%else%>
+            <img src=<%= item.image_url %> alt='image'>
+          <%end%>
+      </div>
+      <div class="show-card__body">
+        <h2><%= item.title %></h2>
+        <p class="grey"><%= item.price %>€</p>
+        <p class=show-card__body--description><%= item.description[0..20] + "..." %></p>
+        <div class="mt-1">
+          <%= link_to 'En savoir plus', item_path(item.id) , class: 'btn' %>
+          <%= render(
+                partial: "carts/add_to_cart_btn",
+                locals: {item: item}
+                ) 
+          %>
+        </div>
+      </div>
+    <%end%>
+  </div>
+
+  <div class='show-card smaller'>
+    <% item = Item.last %>
+    <% if @items.exclude?(item) %>
+      <div class='index-card__illustration show-card__illustration'>
+        <% if item.item_picture.attached? %>
+            <%= image_tag item.item_picture, alt: 'image' %>
+          <%else%>
+            <img src=<%= item.image_url %> alt='image'>
+          <%end%>
+      </div>
+      <div class="show-card__body">
+        <h2><%= item.title %></h2>
+        <p class="grey"><%= item.price %>€</p>
+        <p class=show-card__body--description><%= item.description[0..20] + "..." %></p>
+        <div class="mt-1">
+          <%= link_to 'En savoir plus', item_path(item.id) , class: 'btn' %>
+          <%= render(
+                partial: "carts/add_to_cart_btn",
+                locals: {item: item}
+                ) 
+          %>
+        </div>
+      </div>
+    <%end%>
+  </div>
+
+  <div class='show-card smaller'>
+    <% item = Item.first(2).last %>
+    <% if @items.exclude?(item) %>
+      <div class='index-card__illustration show-card__illustration'>
+        <% if item.item_picture.attached? %>
+            <%= image_tag item.item_picture, alt: 'image' %>
+          <%else%>
+            <img src=<%= item.image_url %> alt='image'>
+          <%end%>
+      </div>
+      <div class="show-card__body">
+        <h2><%= item.title %></h2>
+        <p class="grey"><%= item.price %>€</p>
+        <p class=show-card__body--description><%= item.description[0..20] + "..." %></p>
+        <div class="mt-1">
+          <%= link_to 'En savoir plus', item_path(item.id) , class: 'btn' %>
+          <%= render(
+                partial: "carts/add_to_cart_btn",
+                locals: {item: item}
+                ) 
+          %>
+        </div>
+      </div>
+    <%end%>
+  </div>
+
+</div>

@@ -1,0 +1,120 @@
+.items-index-container {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+
+  .herobar {
+    background-image: url(https://i.pinimg.com/originals/07/89/d5/0789d5fa211be6fbb54747727944b351.jpg);
+    height: 20rem;
+    width: 95%;
+    background-size: cover;
+    background-position: 50% 50%;
+    display: grid;
+    place-content: center;
+    margin: 2rem auto;
+    border-radius: 2rem;
+
+    h1 {
+      color: #fff;
+      text-shadow: 0 0 5px rgba(0, 0, 0, .7);
+      font-size: 6rem;
+    }
+  }
+
+  .items {
+    width: 80%;
+    margin: 5rem 0;
+
+    .index-card {
+      margin-top: 2rem;
+      margin-bottom: 2rem;
+      font-size: 1.2rem;
+      padding: 3em;
+      border-radius: 3rem;
+      transform: translateX(0);
+      transition: all .6s ease-in-out;
+
+      &__actions {
+        .btn {
+          display: block;
+          width: fit-content;
+        }
+      }
+
+      &:hover {
+        transform: translateX(-2%);
+      }
+    }
+
+    .index-card:nth-child(2n) {
+      background-color: $light-primary;
+    }
+
+    .index-card:nth-child(2n + 1) {
+      background-color: $light-secondary;
+    }
+  }
+}
+
+@media screen and (min-width: 751px) {
+  .items-index-container .items {
+    .index-card:nth-child(2n) {
+      flex-direction: row;
+      text-align: right;
+      margin-left: auto;
+
+      .btn {
+        margin-left: auto;
+      }
+
+      &:hover {
+        transform: translateX(2%);
+      }
+    }
+    
+    .index-card:nth-child(2n + 1) {
+      flex-direction: row-reverse;
+    }
+  }
+}
+
+@media screen and (max-width: 750px) {
+  .items-index-container {
+    .herobar {
+      h1 {
+        font-size: 4rem;
+      }
+    }
+    .index-card {
+      flex-wrap: wrap;
+      justify-content: center;
+      margin: 2rem auto;
+
+      &__illustration {
+        img {
+          width: 100%;
+          flex: 0 0 auto;
+          aspect-ratio: 1/1;
+        }
+      }
+      &__body {
+        width: 100%;
+        text-align: center;
+        margin: 1rem 0;
+      }
+
+      &__actions {
+        width: 100%;
+        text-align: center;
+
+        .btn {
+          margin: 1rem auto;
+        }
+
+        p {
+          width: auto;
+        }
+      }
+    }
+  }
+}

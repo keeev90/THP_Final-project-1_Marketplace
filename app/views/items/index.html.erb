@@ -1,0 +1,13 @@
+<div class='items-index-container'>
+  <div class='herobar'><h1>Miaou</h1></div>
+  <div class='items'>
+    <% @items.each do |item| %>
+      <% if item.sellable || (user_signed_in? && current_user.is_admin)%>
+        <%= render(
+          partial: 'item_card',
+          locals: { item: item }
+        ) %>
+        <% end %>
+    <% end %>
+  </div>
+</div>

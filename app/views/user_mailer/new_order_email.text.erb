@@ -1,0 +1,14 @@
+Nouvelle commande
+==============================================================
+    
+Bonjour admin,
+
+<%= @user.email %> vient de passer une nouvelle commande pour un montant total de : <%= @order.total_price %>€
+
+Voici le détail de votre commande :
+
+<% @order.items.each do |item| %>
+  <%= link_to "#{item.title}", item.image_url %> (<%=item.price%> €) x<%=item.join_table_item_orders.find_by(order_id: @order.id).quantity%>
+<% end %>
+
+Oh yeah !

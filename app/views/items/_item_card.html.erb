@@ -1,0 +1,33 @@
+<div class='index-card'>
+  <div class='index-card__illustration'>
+    <% if item.item_picture.attached? %>
+      <%= image_tag item.item_picture, alt: 'image' %>
+    <%else%>
+      <img src=<%= item.image_url %> alt='image'>
+    <%end%>
+  </div>
+  <div class='index-card__body'>
+    <% if user_signed_in? && current_user.is_admin%>
+      <%= link_to raw("<i class='fa fa-edit admin-btn edit'></i>"), edit_admin_item_path(item) %>
+      <% if item.sellable %>
+        <%= link_to raw("<i class='fas fa-eye-slash admin-btn mask'></i>"), mask_admin_items_path(item: item, unmask:false) %>
+      <% else %>
+        <div class="masked">Masqué</div>
+        <%= link_to raw("<i class='fas fa-eye admin-btn unmask'></i>"), mask_admin_items_path(item:item, unmask:true) %>
+      <% end %>
+
+      <%= link_to raw("<i class='fas fa-times admin-btn delete'></i>"), admin_item_path(item), data: { confirm: "Hello admin, es-tu sûr de vouloir supprimer cet item?" }, method: "delete" %>
+    <% end %>
+    <div class='index-card__info'>
+      <h3 class='title'><%= item.title %></h3>
+      <p class='price'><%= "#{item.price} €" %></p>
+    </div>
+    <div class='index-card__actions'>
+      <%= link_to 'En savoir plus', item_path(item.id) , class: 'btn' %>
+      <%= render(
+        partial: "carts/add_to_cart_btn",
+        locals: {item: item}
+      ) %>
+    </div>
+  </div>
+</div>

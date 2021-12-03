@@ -1,0 +1,263 @@
+// Cards in item#index
+.index-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 90%;
+
+  &__illustration {
+    max-width: 15rem;
+    height: auto;
+    max-height: 15rem;
+    overflow: hidden;
+    margin: 0 1rem;
+    border-radius: 4rem;
+
+    img {
+      object-fit: cover;
+      height: 100%;
+      width: auto;
+      aspect-ratio: 1/1;
+      transform: scale(1);
+      transition: all .5s ease;
+
+      &:hover {
+        transform: scale(1.2);
+      }
+    }
+  }
+
+  &__body {
+    & .admin-btn {
+      font-size: 1.4em;
+      position: absolute;
+      top: 1em;
+
+      &:hover:after {
+        opacity: 1;
+      }
+
+      &:after {
+        font-family: 'Poppins', sans-serif;
+        font-size: 0.6em;
+        background-color: #fff;
+        display: block;
+        padding: 0.2em 1em;
+        position: absolute;
+        transform: translate(-35%);
+        -webkit-transform: translate(-35%);
+        -moz-transform: translate(-35%);
+        -ms-transform: translate(-35%);
+        -o-transform: translate(-35%);
+        border-radius: 4px;
+        -webkit-border-radius: 4px;
+        -moz-border-radius: 4px;
+        -ms-border-radius: 4px;
+        -o-border-radius: 4px;
+        top: -1.5em;
+        box-shadow: 0 0 4px 1px rgba(0,0,0,0.1);
+        opacity: 0;
+        transition: opacity 0.4s;
+        -webkit-transition: opacity 0.4s;
+        -moz-transition: opacity 0.4s;
+        -ms-transition: opacity 0.4s;
+        -o-transition: opacity 0.4s;
+        pointer-events: none;
+}
+      
+    }
+
+    & .masked {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      background-color: #000;
+      opacity: 0.4;
+      border-radius: 48px;
+      -webkit-border-radius: 48px;
+      -moz-border-radius: 48px;
+      -ms-border-radius: 48px;
+      -o-border-radius: 48px;
+      pointer-events: none;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      font-size: 2.5em;
+}
+
+    & .delete {
+      color: $danger;
+      right: 0.5em;
+
+      &:after {
+        content: "Supprimer";        
+      }
+    }
+
+    & .edit {
+      color: $gni;
+      right: 1.4em;
+
+      &:after {
+        content: "Éditer";        
+      }
+    }
+
+    & .mask {
+      color: $gni;
+      right: 2.9em;
+
+      &:after {
+        content: "Masquer";        
+      }
+    }
+
+    & .unmask {
+      color: $gni;
+      right: 2.9em;
+
+      &:after {
+        content: "Afficher";        
+      }
+    }
+
+  }
+}
+
+// Cards in item#show
+.show-card {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+
+  &__body {
+    margin: 1em;
+
+    & .grey {
+      color: $grey;
+      margin: 1rem 0;
+    }
+
+    &--description {
+      padding: 1rem 0;
+      margin: 0.5em 0 0;
+      max-width: 20rem;
+      border-bottom: 1px solid $lightgrey;
+      border-top: 1px solid $lightgrey;
+    }
+  }
+}
+
+// Cards in cart#show
+.cart-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 1rem 0;
+
+  & img {
+    width: 10rem;
+    border-radius: 3rem;
+    -webkit-border-radius: 3rem;
+    -moz-border-radius: 3rem;
+    -ms-border-radius: 3rem;
+    -o-border-radius: 3rem;
+    margin-right: 1rem;
+  }
+
+  &__content {
+    &--title, &--quantity {
+      font-weight: bolder;
+    }
+
+    &--options {
+      display: flex;
+      align-items: center;
+    }
+  }
+
+  & .change_quantity {
+    font-size: 1.2em;
+    padding: 0 0.2em;
+    border-radius: 4px;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    -ms-border-radius: 4px;
+    -o-border-radius: 4px;
+    border: 1px solid black;
+    cursor: pointer;
+    margin-left: 0.5em;
+    color: $gni;
+  }
+}
+
+// Cards in order#show
+.order-card {
+  & a {
+    color: $gni;
+  }
+
+  &__title {
+    text-align: center;
+    margin-bottom: 2em;
+  }
+
+  &__price {
+    text-align: center;
+    padding: 1em 0;
+    border-top: 1px solid $lightgrey;
+    font-size: 1.2em;
+    }
+}
+.order-card .show-card {
+  margin-bottom: 1em;
+}
+
+// Cards in user#show (aka previous orders)
+.previous-orders__item {
+  margin: 0.5em 0 2em;
+
+  &--amount {
+    font-size: 0.9em;
+  }
+}
+
+// Card after payment success
+.payment-success {
+  margin-top: 1em;
+  padding: 0 1em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+
+  & h1 {
+    margin-bottom: 0.5em
+  }
+
+  & .btn {
+    max-width: 300px;
+  }
+}
+
+
+// Cards recommendations ( on item#show )
+.recommendations-title {
+  text-align: center;
+  margin: 3em 0 1em 0;
+}
+
+.recommendations-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.show-card.smaller {
+  width: 15em;
+  font-size: 0.8em;
+  text-align: center;
+}

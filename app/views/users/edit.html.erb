@@ -1,0 +1,21 @@
+<div class="form-page">
+  <div class="form-page__form">
+    <h2>Editer mes informations</h2>
+
+    <%= form_for(@user, url: user_path(@user), method: :put) do |f| %>
+      <div class="field">
+        <%= f.label 'Prénom' %><br />
+        <%= f.text_field :first_name, autofocus: true, autocomplete: "first_name" %>
+      </div>
+      <div class="field">
+        <%= f.label 'Nom' %><br />
+        <%= f.text_field :last_name, autofocus: true, autocomplete: "last_name" %>
+      </div>
+
+      <div class="actions">
+        <%= f.submit "Enregistrer les changements", class:"btn" %>
+      </div>
+    <% end %>
+    <%= link_to 'Editer mon Email / Mot de Passe', edit_user_registration_path(@user) %>
+  </div>
+</div>

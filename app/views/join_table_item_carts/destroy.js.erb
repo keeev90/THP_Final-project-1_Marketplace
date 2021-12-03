@@ -1,0 +1,22 @@
+document
+  .querySelector('div[data-id="<%= @id %>"]')
+  .remove()
+document
+  .querySelector('.cart-items-count')
+  .innerText = "(<%= @cart_items_count %>)"
+
+document
+  .querySelector('.cart-total-wrapper__amount')
+  .innerText = 'Total : <%= @total_amount %>€'
+
+console.log(<%= @empty_cart %>)
+
+if (<%= @empty_cart %> === 0) {
+  document
+    .querySelector('.cart-items-wrapper')
+    .innerHTML = "<%= j render partial: 'mycarts/empty_cart' %>";
+
+  document
+    .querySelector('.cart-total-wrapper')
+    .innerHTML = '';
+}

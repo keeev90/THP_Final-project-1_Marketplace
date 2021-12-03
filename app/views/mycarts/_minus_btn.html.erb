@@ -1,0 +1,6 @@
+<%= link_to("-",
+  join_table_item_cart_path(id: id, increment: -1),
+  method: "patch",
+  class:"change_quantity minus",
+  remote: true
+) %>

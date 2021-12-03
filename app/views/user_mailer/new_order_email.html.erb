@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Nouvelle commande</h1>
+    <p>Bonjour admin,</p>
+    <p><%= @user.email %> vient de passer une nouvelle commande pour un montant total de : <%= @order.total_price %>€</p>
+    <h6>Voici le détail de la commande :</h6>
+    <% @order.items.each do |item| %>
+      </p><%= link_to "#{item.title}", item.image_url %> (<%=item.price%> €) x<%=item.join_table_item_orders.find_by(order_id: @order.id).quantity%></p>
+    <% end %>
+    <p>Oh yeah!</p>
+  </body>
+</html>

@@ -1,0 +1,7 @@
+<div class="payment-success">
+  <h1>Confirmation de paiement</h1>
+  <p>Nous avons bien reçu votre paiement de <%= number_to_currency(@payment_intent.amount_received / 100.0, unit: "€", separator: ",", delimiter: "", format: "%n %u") %>.</p>
+  <p>Téléchargez vos photos depuis l'email de confirmation qui vous a été envoyé sur <%= current_user.email %></p>
+  <%= link_to "Voir le détail de ma commande", order_path(@order), class: 'btn' %>
+  <%= link_to "Revenir à l'accueil", root_path, class: 'btn' %>
+</div>

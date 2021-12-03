@@ -1,0 +1,13 @@
+<h1>Page admin item#Show</h1>
+<div class='show-card'>
+  <div class='index-card__illustration show-card__illustration'>
+    <%= image_tag @item.item_picture, alt: 'image' %>
+  </div>
+  <div class="show-card__body">
+    <h2><%= @item.title %></h2>
+    <p class="grey"><%= @item.price %>€</p>
+    <p class=show-card__body--description><%= @item.description %></p>
+    <p class=show-card__body--description>URL de l'image : <%= @item.image_url %></p>
+    <div class="mt-1"><%= link_to "Ajouter au panier", join_table_item_carts_path(id: @item.id), method: "post", class: "btn" %></div>
+  </div>
+</div>

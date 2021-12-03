@@ -1,0 +1,62 @@
+<div class="cart-items-wrapper">
+  <% if cart.items.length >0 %>
+
+    <% cart.items.each do |item| %>
+      <div class="cart-item" data-id=<%= item.id %>>
+        <div class="cart-item__picture">
+          <% if item.item_picture.attached? %>
+            <%= image_tag item.item_picture, alt: 'image' %>
+          <% else %>
+            <img src=<%= item.image_url %> alt='image'>
+          <% end %>
+        </div>
+        
+        <div class="cart-item__content">
+          <p class="cart-item__content--title"><%= item.title %></p>
+          <p><%= item.price %>€</p>
+          <p>
+            <span class="cart-item__content--quantity">Quantité :</span>
+            <span class='cart-item__content--quantity-num'>
+              <%= JoinTableItemCart.find_by(item: item, cart: cart).quantity %>
+            </span>
+          </p>
+
+          <%# Fonction d'ajout ou retrait de quantité : Moins de 1 = Supprimer l'article %>
+          <% if (JoinTableItemCart.find_by(item: item, cart: cart).quantity - 1 <= 0) %>
+            <div class="cart-item__content--options">
+              <%= render(
+                partial: 'remove_btn',
+                locals: { id: item.id }
+              ) %>
+              <%= link_to "+", join_table_item_cart_path(id: item.id, increment: 1), method: "patch",class:"change_quantity", remote: true %>
+            </div>
+          <% else %>
+            <%# Insérer ici fonction d'incrément de quantité %>
+            <div class="cart-item__content--options">
+              <%= render(
+                partial: 'minus_btn',
+                locals: { id: item.id }
+              ) %>
+              <%= link_to "+", join_table_item_cart_path(id: item.id, increment: 1), method: "patch",class:"change_quantity", remote: true %>
+            </div>
+          <% end %>
+
+        </div>
+      </div>
+    <% end %>
+
+  <% else %>
+    <%= render partial: 'empty_cart' %>
+  <% end %>
+</div>
+
+<div class="cart-total-wrapper">
+  <% if cart.items.length > 0 %>
+    <p class="cart-total-wrapper__amount"> Total : <%= @total_amount %>€</p>
+    <%= link_to "Finaliser la commande",
+      checkout_create_path(cart: cart),
+      class:"btn",
+      remote: true,
+      method: :post %>
+  <% end %>
+</div>

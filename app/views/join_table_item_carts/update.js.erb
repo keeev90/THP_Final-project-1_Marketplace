@@ -1,0 +1,63 @@
+function quantityUpdate(itemCard) {
+  const totalAmount = document.querySelector('.cart-total-wrapper__amount')
+
+  itemCard
+    .querySelector('.cart-item__content--quantity-num')
+    .innerText = "<%= @quantity %>";
+
+  totalAmount.innerText = 'Total : <%= @total_amount %>€'
+}
+
+function changeQuantity() {
+  const itemCard = document
+    .querySelector('div[data-id="<%= @id %>"]');
+  
+  switch (true) {
+    case (<%= @quantity %> === 0):
+      itemCard.remove();
+      break;
+
+    case (<%= @quantity %> === 1):
+
+      const minusBtn = itemCard
+        .querySelector('.minus');
+
+      minusBtn
+        .parentNode
+        .insertAdjacentHTML(
+          'afterbegin',
+          "<%= j render(partial: 'mycarts/remove_btn', locals: { id: @id }) %>"
+        );
+
+      minusBtn.remove();
+
+      quantityUpdate(itemCard);
+      break;
+
+    case (<%= @quantity %> === 2):
+
+      const delBtn = itemCard
+        .querySelector('.danger-btn');
+
+      if (delBtn) {
+        delBtn
+          .parentNode
+          .insertAdjacentHTML(
+            'afterbegin',
+            "<%= j render(partial: 'mycarts/minus_btn', locals: { id: @id }) %>"
+          );
+
+        delBtn.remove();
+      }
+
+      quantityUpdate(itemCard);
+      break;
+
+    default:
+
+      quantityUpdate(itemCard);
+      break;
+  }
+}
+
+changeQuantity();

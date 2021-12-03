@@ -1,0 +1,150 @@
+body {
+  padding-top: 5rem;
+}
+
+.navbar {
+  background-color: $secondary;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  z-index: 99;
+  width: 100%;
+  position: fixed;
+  top: 0;
+
+  &__brand {
+    display: flex;
+    align-items: center;
+
+    .logo {
+      height: 3rem;
+      width: 3rem;
+      margin-right: 1rem;
+      transform: rotate(0);
+
+      &:hover {
+        animation: flip 1s ease;
+      }
+    }
+
+    @keyframes flip {
+      from {
+        transform: rotate(0deg);
+      }
+
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    .title {
+      font-size: 2rem;
+      color: #fff;
+      font-weight: 400;
+    }
+  }
+
+  &__items {
+    .item {
+      margin: .8rem;
+      color: $gni;
+      font-size: 1.1rem;
+    }
+  }
+
+  .dropdown-btn {
+    display: none;
+  }
+}
+
+.dropdown-menu {
+  position: fixed;
+  top: 0;
+  left: 100%;
+  width: 100%;
+  min-height: 100vh;
+  display: block;
+  z-index: 50;
+  background-color: $secondary;
+  padding: 6rem 2rem;
+  transition: all .4s ease;
+  
+  &__brand {
+    h1 {
+      color: #fff;
+      text-shadow: 0 0 5px rgba(0, 0, 0, .3);
+      font-size: 2.5rem;
+      line-height: 1.5;
+      margin-top: 2rem;
+      margin-bottom: 3rem;
+    }
+  }
+
+  &__items {
+    display: flex;
+    flex-direction: column;
+    a {
+      font-size: 1.5rem;
+      color: white;
+      text-shadow: 0 0 5px rgba(0, 0, 0, .3);
+      line-height: 1.5;
+    }
+  }
+
+}
+
+@media screen and (max-width: 820px) {
+  .navbar {
+    &__brand {
+      .title {
+        display: none;
+      }
+    }
+
+    &__items {
+      display: none;
+    }
+    .dropdown-btn {
+      display: block;
+      width: 4.3rem;
+      position: absolute;
+      stroke: #fff;
+      right: 1rem;
+      top: 1rem;
+      transform-origin: 50% 50%;
+      transform: rotate(0);
+      cursor: pointer;
+      transition: all .4s ease;
+
+      g {
+        rect:nth-child(2n),
+        path:nth-child(2n) {
+          fill: #fff;
+          stroke: #fff;
+        }
+
+        rect:nth-child(2n + 1),
+        path:nth-child(2n + 1) {
+          fill: #000;
+          stroke: #000;
+        }
+
+        path:last-child {
+          fill: #fff;
+          stroke: #fff;
+        }
+      }
+
+      &.is-active {
+        transform: rotate(90deg);
+      }
+    }
+  }
+
+  .dropdown-menu {
+    &.is-active {
+      left: 0;
+    }
+  }
+}

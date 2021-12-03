@@ -1,0 +1,40 @@
+<div class="show-card__menu">
+  <%= link_to "Retour", items_path %>
+</div>
+
+<div class="form-page">
+  <div class="form-page__form">
+    <h1>Modification d'un item</h1>
+    <%= form_with model: @item, url: admin_item_path(@item), local: true, class: "form", id: "item-form", multipart: true do |f| %>
+      <div class="form-group">
+        <%= f.label "Titre", class: "form-label" %>
+        <%= f.text_field :title, class: "form-control", placeholder: "Poticha", required: true %>
+      </div>
+      <div class="form-group">
+        <%= f.label "Description", class: "form-label" %>
+        <%= f.text_area :description, class: "form-control", placeholder: "Oh qu'il est joli le poticha", required: true %>
+      </div>
+      <div class="form-group">
+        <%= f.label "Prix (€)", class: "form-label" %>
+        <%= f.number_field :price, class: "form-control", placeholder: "100", required: true %>
+      </div>
+      <div class="form-group">
+        <%= f.label "Catégorie(s)" %> <br />
+        <div class="form-group__checkboxes">
+          <%= f.collection_check_boxes :categories, Category.all,:id, :name , { checked: @item.categories.map(&:to_param) }%>
+        </div>
+      </div>
+      <div class="form-group text-center my-3">
+        <%= f.label "Ajouter la photo", class: "form-label" %>
+        <%= f.file_field :item_picture, accept: 'image/png,image/gif,image/jpeg' %>
+      </div>
+      <div class="form-group">
+        <%= f.label "URL de la photo", class: "form-label" %>
+        <%= f.text_field :image_url, class: "form-control", placeholder: "https://..." %>
+      </div>
+      <div class="text-center">
+        <%= f.submit "Editer", class: "btn" %>
+      </div>
+    <%end%>
+  </div>
+</div>

@@ -1,0 +1,20 @@
+<div class="cart-show-container mt-1">
+    <%= render(
+            partial: 'cart_item',
+            locals: { cart: @cart }
+          ) %>
+    
+    <% if ( Item.all.count > 3 ) %>
+    <%= render(
+          partial: 'item_card_recommendations',
+          locals: { items: @items }
+        ) %>
+    <% end %>
+    
+    <div class="show-card__menu">
+      <%= link_to "Retour", items_path %>
+      <br/><br/>
+    </div>
+
+</div>
+

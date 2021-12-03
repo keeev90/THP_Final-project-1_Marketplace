@@ -1,0 +1,43 @@
+.btn {
+  display: block;
+  margin: 1rem 0;
+  width: 100%;
+  padding: 0.5rem;
+  border-radius: 6px;
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
+  -ms-border-radius: 6px;
+  -o-border-radius: 6px;
+  border: none;
+  background-color: $secondary;
+  color: #fff;
+  text-transform: uppercase;
+  cursor: pointer;
+
+  &:hover {
+    opacity: 0.7;
+  }
+}
+
+.danger-btn {
+  font-size: 0.7em;
+  padding: 0.2rem;
+  text-align: center;
+  background-color: $danger;
+}
+
+.info-btn {
+  font-size: 0.7em;
+  padding: 0.2rem;
+  text-align: center;
+  background-color: $gni;
+  display: inline;
+
+  &.tag-btn {
+    cursor: default;
+
+    &:hover {
+      opacity: 1;
+    }
+  }
+}

@@ -1,0 +1,25 @@
+<div class='show-card'>
+  <div class='index-card__illustration show-card__illustration'>
+    <% if item.item_picture.attached? %>
+        <%= image_tag item.item_picture, alt: 'image' %>
+      <%else%>
+        <img src=<%= item.image_url %> alt='image'>
+      <%end%>
+  </div>
+  <div class="show-card__body">
+    <h2><%= item.title %></h2>
+    <p class="grey"><%= item.price %>€</p>
+    <% item.categories.each do |category| %>
+      <div class="btn info-btn tag-btn"><%= category.name %></div>
+    <% end %>
+    <p class="show-card__body--description"><%= item.description %></p>
+
+    <div class="mt-1">
+      <%= render(
+            partial: "carts/add_to_cart_btn",
+            locals: {item: item}
+            ) 
+      %>
+    </div>
+  </div>
+</div>

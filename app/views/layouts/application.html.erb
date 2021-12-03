@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>TheKittingProject</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <meta charset='UTF-8'>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1">
+    <script src="https://kit.fontawesome.com/8e2a5370b3.js" crossorigin="anonymous"></script>
+
+    <%= stylesheet_link_tag    'application', media: 'all' %>
+    <%= javascript_include_tag 'application' %>
+    <link rel="icon" href="https://www.coolcatsnft.com/assets/images/e_cool.png"/>
+  </head>
+
+  <body>
+    <%= render 'layouts/navbar' %>
+    <%= render 'layouts/flash' %>
+    <div class="page-content">
+      <%= yield %>
+    </div>
+    <%= render 'layouts/footer' %>
+
+    <%= render 'layouts/audios' %>
+
+    <%= javascript_include_tag 'navbar' %>
+    <%= javascript_include_tag 'sounds' %>
+    <script src="https://js.stripe.com/v3/"></script>
+    <script type="module" src="//unpkg.com/@grafikart/drop-files-element"></script>
+  </body>
+</html>

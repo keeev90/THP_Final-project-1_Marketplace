@@ -1,0 +1,25 @@
+  <div class="show-card__menu">
+    <%= link_to "Retour", items_path %>
+    <br/><br/>
+  </div>
+  
+  <div class="admin-board-container">
+  <h1>Bienvenue dans l'espace admin</h1>
+  <ul>
+    <li><%= link_to  "Créer un nouvel item", new_admin_item_path, class:"btn" %></li>
+    <li>Pour modifier un item : cliquez sur l'icone "modifier" située directement sur la <%= link_to 'liste des items', items_path %></li>
+    <li>Pour supprimer un item : cliquez sur l'icone "supprimer" située directement sur la <%= link_to 'liste des items', items_path %></li>
+  </ul>
+
+  <div class="admin-board-container__statistics">
+    <h2> Statistiques </h2>
+    <p> Nombre de commandes : <%= @orders.length %> </p>
+    <p> Chiffre d'affaires total : <% @orders.each { |i| @sum += i.total_price} %> <%= @sum %>€</p>
+    <p> Panier moyen :  <% if @orders.length > 0 %>
+                          <%= @sum / @orders.length %>
+                        <% else %>
+                          0
+                        <% end %>€
+    </p>
+  </div>
+</div>

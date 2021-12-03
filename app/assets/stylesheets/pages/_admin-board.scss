@@ -1,0 +1,30 @@
+.admin-board-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 3em 1.5em 0;
+  text-align: center;
+
+  & h1, & .btn {
+    margin-bottom: 1.5rem;
+  }
+
+  & li {
+    list-style-type: none;
+
+    & a:not(.btn) {
+      color: $gni;
+      text-decoration: underline;
+    }
+  }
+
+  &__statistics {
+    padding-top: 1em;
+    margin-top: 1em;
+    border-top: 1px solid $lightgrey;
+
+    & h2, & p {
+      margin-bottom: 0.5em;
+    }
+  }
+}

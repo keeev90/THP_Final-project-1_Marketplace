@@ -1,0 +1,13 @@
+.show-user-container {
+  margin: 2rem;
+
+  .user-info {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 3rem;
+
+    p {
+      margin-bottom: .8rem;
+    }
+  }
+}

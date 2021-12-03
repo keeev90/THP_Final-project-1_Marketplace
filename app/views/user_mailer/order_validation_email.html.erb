@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Confirmation de votre commande</h1>
+    <h3>Bonjour, nous avons le plaisir de confirmer votre commande d'un montant total de : <%= @order.total_price %>€</h3>
+    <h6>Voici le détail de votre commande :</h6>
+      <% @order.items.each do |item| %>
+        </p><%= link_to "#{item.title}", item.image_url %> (<%=item.price%>€) x<%=item.join_table_item_orders.find_by(order_id: @order.id).quantity%></p>
+        <% if item.item_picture.attached? %>
+          <div class='index-card__illustration show-card__illustration'>
+            <%= image_tag item.item_picture, alt: 'image' %>
+          </div>
+        <% end %>
+      <% end %>
+    <p>A bientôt sur Poticha.</p>
+  </body>
+</html>
